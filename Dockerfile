@@ -14,6 +14,7 @@ RUN export DEBCONF_NONINTERACTIVE_SEEN=true \
 COPY coredns /coredns
 RUN ls -lisa /coredns
 RUN setcap cap_net_bind_service=+ep /coredns
+RUN getcap /coredns
 
 FROM --platform=$TARGETPLATFORM ${BASE}
 COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
