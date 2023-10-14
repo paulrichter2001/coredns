@@ -13,7 +13,7 @@ RUN export DEBCONF_NONINTERACTIVE_SEEN=true \
     apt-get clean
 COPY coredns /coredns
 RUN ls -lisa /coredns
-RUN setcap cap_net_bind_service=+ep /coredns
+RUN setcap cap_net_bind_service=+ep /coredns && touch /coredns
 RUN getcap /coredns
 
 FROM --platform=$TARGETPLATFORM ${BASE}
